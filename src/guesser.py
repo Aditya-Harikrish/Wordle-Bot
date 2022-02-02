@@ -5,7 +5,7 @@ from typing import Tuple
 
 
 # returns the correct guess and the number of guesses made
-def guesser(wordLength: int, targetWord: str, possibleWords: dict) -> Tuple[str, int]:
+def guesser(wordLength: int, targetWord: str, possibleWords: dict, printGuess=False) -> Tuple[str, int]:
     freq = {x: 0 for x in ascii_lowercase}
 
     with open("data/dictionary.txt", 'r') as f:
@@ -30,7 +30,8 @@ def guesser(wordLength: int, targetWord: str, possibleWords: dict) -> Tuple[str,
             guessWord = max(possibleWords, key=possibleWords.get)
             guessCount += 1
 
-            # print(f"Guess number {guessCount}: {guessWord}")
+            if printGuess:
+                print(f"Guess number {guessCount}: {guessWord}")
 
             judgement = judge(guessWord, targetWord, wordLength)
             # print(f'Judgement: {[x.name for x in judgement]}')

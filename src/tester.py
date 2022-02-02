@@ -12,7 +12,7 @@ versionNumber = 0
 if __name__ == '__main__':
     with open('data/dictionary.txt', 'r') as f:
         minWordLength = 1
-        maxWordLength = 2
+        maxWordLength = 20
         # iterating over words of lengths from minWordLength to maxWordLength
         performance = {}  # key : val = word length : average number of guesses
         for wordLength in range(minWordLength, maxWordLength + 1):
@@ -48,9 +48,8 @@ if __name__ == '__main__':
             print(
                 f'Max number of guesses: {performance[wordLength]["maxGuessCount"]}\n')
 
-    print(performance)
-    # dirname = os.path.dirname(__file__)
-    # jsonFileName = os.path.join(
-    #     dirname, '..', 'data', 'performance', 'version' + str(versionNumber) + '.json')
-    # with open(jsonFileName, 'w') as jsonFile:
-    #     json.dump(performance, jsonFile)
+    dirname = os.path.dirname(__file__)
+    jsonFileName = os.path.join(
+        dirname, '..', 'data', 'performance', 'version' + str(versionNumber) + '.json')
+    with open(jsonFileName, 'w') as jsonFile:
+        json.dump(performance, jsonFile)
